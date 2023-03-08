@@ -5,25 +5,19 @@ import Home from './Pages/Home';
 import Starred from './Pages/Starred';
 
 function App() {
-    return ( <
-        div >
-
-        <
-        BrowserRouter >
-        <
-        Routes >
-        <
-        Route path = "/"
-        element = { < Home / > }
-        /> <
-        Route path = "/about"
-        element = { < Starred / > }
-        /> <
-        Route element = { < div > Page not found < /div>}/ >
-            <
-            /Routes> <
-            /BrowserRouter> <
-            /div>
+    return ( <div>
+    
+        <BrowserRouter >
+        <Routes>
+        <Route path = "/"
+        element = {<Home/>}
+        /> 
+        <Route path = "/starred"
+        element = { <Starred/>}/> 
+        <Route element = { <div> Page not found </div>}/ >
+            </Routes>
+             </BrowserRouter>
+             </div>
         );
     }
 
