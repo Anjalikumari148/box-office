@@ -80,8 +80,8 @@ const Home = () => {
         checked = "isShowsSearch"
         value = "shows"
         onChange = { onRadioChange }
-        /> < /
-        label >
+        /> <
+        /label>
 
         <
         label htmlFor = 'actor-search' >
@@ -91,8 +91,8 @@ const Home = () => {
         value = "people"
         checked = "!isShowsSearch"
         onChange = { onRadioChange }
-        /> < /
-        label > <
+        /> <
+        /label> <
         /div>
 
 
