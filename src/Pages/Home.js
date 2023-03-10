@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import MainPageLayout from '../Components/MainPageLayout'
 import { apiGet } from '../misc/config';
+import ShowGrid from '../Components/show/showGrid';
+import ActorGrid from '../Components/actor/actorGrid';
+
+
 
 
 
@@ -17,7 +21,7 @@ function Home() {
 
     function onSearch() {
         // we need both actor and shows result so we just searchoption we get the what we want to show
-        apiGet(`/search/${searchOption}?q='${input}`)
+        apiGet(`/search/${searchOption}?q= ${input}`)
             .then(result => {
                 setResults(result);
             });
@@ -42,19 +46,14 @@ function Home() {
             return <div>No results</div>;
         }
         if (results && results.length > 0) {
-            return results[0].show ? results.map(item => (
-                <div key={item.show.id}>{item.show.name}</div>
-            )) : results.map(item => (
-                <div key={item.id}>{item.show.name}</div>
-            ));
+            return results[0].show ? <ShowGrid data ={results}/>
+             :<ActorGrid data= {results}/>
+        
 
 
         }
         return null;
     }
-
-
-
 
     return (
         <MainPageLayout>
