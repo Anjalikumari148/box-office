@@ -1,14 +1,19 @@
 import React from 'react'
-import {Link} from 'react-router-dom' 
+import {Link} from 'react-router-dom'
+
+import { StyledShowCard } from './showCardStyled';
+
+ 
 
 function showCard({ id, image, name, summary }) {
+  // summary we split with spaces  where every item is a word and then join the replace with regular exprssion to match the pattern
   const summaryAsText = summary
     ? `${summary.split(' ').slice(0, 10).join(' ').replace(/<.+?>/g, "")}...`
     : 'No description';
 
   return (
-    <div>
-      <div>
+    <StyledShowCard>
+      <div className="img-wrapper">
         <img src={image} alt="show" />
       </div>
 
@@ -16,11 +21,11 @@ function showCard({ id, image, name, summary }) {
 
       <p>{summaryAsText}</p>
 
-      <div>
+      <div className='btns'>
         <Link to={`/show/${id}`}>Read more</Link>
         <button type="button">Star me</button>
       </div>
-    </div>
+     </StyledShowCard>
   );
 };
 
