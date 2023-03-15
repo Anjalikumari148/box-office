@@ -4,16 +4,18 @@ import { useShows } from '../misc/customHook'
 import {apiGet} from '../misc/config'
 
 function Starred() {
-    const [starred] =useShows()
+
+
+    const [state] =useShows()
 
     const[shows,setShows]= useState(null);
     const[isLoading,setIsLoading]= useState(true);
     const[error,setError] = useState(null);
 
     useEffect(()=>{
-        if(starred && starred.length>0)
+        if(state && state.length>0)
         {
-         const promises = starred.map(showId =>apiGet(`/shows/${showId}`))
+         const promises = state.map((showId) =>apiGet(`/shows/${showId}`))
         //  starred.map(showId =>apiGet(`/shows/${showId}`));
 
           Promise.all(promises)
@@ -30,7 +32,7 @@ function Starred() {
         else {
             setIsLoading(false)
         }
-    } ,[starred])
+    } ,[state])
 
    
 
