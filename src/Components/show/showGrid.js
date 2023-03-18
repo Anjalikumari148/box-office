@@ -7,22 +7,22 @@ import { useShows } from '../../misc/customHook'
 
 // we defined everything we need inside our card & images we did if found show the image if not show not found image
 
-function showGrid({data}){
-  const [starredShows,dispatchStarred] = useShows();
+function ShowGrid({data}){
+  const {dispatch,state} = useShows();
 
 
   return (
     <FlexGrid>
    {data.map(({show}) => {
-    const isStarred = Array(starredShows).includes(show.id)
+    const isStarred = (state).includes(show.id)
 
     const onStarClick =() =>
     {
          if(isStarred){
-         dispatchStarred( {type:'REMOVE',showId:show.id})
+         dispatch( {type:'REMOVE',showId:show.id})
          }
          else{
-          dispatchStarred({type:'ADD' ,showId: show.id})
+          dispatch({type:'ADD' ,showId: show.id})
          }
     }
 
@@ -43,4 +43,4 @@ function showGrid({data}){
   )
 }
 
-export default showGrid
+export default ShowGrid

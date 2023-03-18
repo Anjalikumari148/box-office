@@ -1,9 +1,10 @@
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable import/named */
 import React from 'react'
 import IMG_PLACEHOLDER from '../../image/images.png'
 
 import { Star } from '../styled';
-import {MainDataWrapper} from './ShowMainDataStyled'
+import {MainDataWrapper,TagList,Headline} from './ShowMainDataStyled'
 
 
 
@@ -11,23 +12,23 @@ function showMainData({ name, rating, summary, tags, image }) {
   return (
     <MainDataWrapper>
       <img src={image ? image.original : IMG_PLACEHOLDER} alt="show-cover" />
-      <div>
-        <div>
+      <div className='text-side'>
+        <Headline>
           <h1>{name}</h1>
           <div>
             <Star />
             <span>{rating.average || 'N/A'}</span>
           </div>
-        </div>
-        <div dangerouslySetInnerHTML={{ __html: summary }} />
+        </Headline>
+        <div className='summary' dangerouslySetInnerHTML={{ __html: summary }} />
 
         <div>
           Tags:{' '}
-          <div>
+          <TagList>
             {tags.map((tag, i) => (
               <span key={i}>{tag}</span>
             ))}
-          </div>
+          </TagList>
         </div>
       </div>
     </MainDataWrapper>

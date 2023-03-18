@@ -29,7 +29,7 @@ function usePersistanceReducer(reducer,initialState,key){
 
   },[state,key])
  
-return [reducer,dispatch]
+return {reducer,dispatch,state}
 }
 
 export function useShows(key ='show'){

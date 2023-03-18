@@ -38,6 +38,7 @@ export const Headline = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+ 
 
   h1 {
     margin: 0;

@@ -1,8 +1,14 @@
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/named */
+/* eslint-disable react/jsx-no-bind */
 import React, { useState } from 'react'
 import MainPageLayout from '../Components/MainPageLayout'
 import { apiGet } from '../misc/config';
-import ShowGrid from '../Components/show/showGrid';
+import ShowGrid from '../Components/show/ShowGrid';
 import ActorGrid from '../Components/actor/actorGrid';
+import { SearchInput,RadioInputsWrapper,SearchButtonWrapper} from './HomeStyled';
+import CustomRadioButton from '../Components/CustomRadioButton';
 
 
 
@@ -57,32 +63,43 @@ function Home() {
 
     return (
         <MainPageLayout>
-            <input type="text"
+            <SearchInput type="text"
                 placeholder='Search for movie or actor'
-                onChange={onInputChange} onKeyDown={onKeyDown} value={input} />
-            <div>
-                <label htmlFor='shows-search'>
-                    Shows
-                    <input id="shows-search"
-                        type='radio'
-                        checked={isShowsSearch}
-                        value="shows"
-                        onChange={onRadioChange} />
-                </label>
+                onChange={onInputChange}
+                onKeyDown={onKeyDown} value={input} />
 
-                <label htmlFor='actor-search'>
-                    Actors
-                    <input id="actor-search"
-                        type='radio'
-                        value="people"
-                        checked={!isShowsSearch}
-                        onChange={onRadioChange} />
-                </label>
-            </div>
+              
 
 
+
+            <RadioInputsWrapper>
+                <div>
+                <CustomRadioButton
+               label ="Shows"
+               id="shows-search"
+               checked={isShowsSearch}
+               value="shows"
+               onChange={onRadioChange}
+               />
+                </div>
+
+                <div>
+
+                <CustomRadioButton
+               label =' Actors'
+               id="actor-search"
+               value="people"
+               checked={!isShowsSearch}
+               onChange={onRadioChange}
+               />
+                
+                </div>
+            </RadioInputsWrapper>
+
+            <SearchButtonWrapper>
             <button type='button' onClick={onSearch}>Search
             </button>
+            </SearchButtonWrapper>
 
             {renderResults()}
         </MainPageLayout>

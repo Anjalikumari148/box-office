@@ -2,11 +2,12 @@ import React ,{ useState ,useEffect} from 'react'
 import MainPageLayout from '../Components/MainPageLayout'
 import { useShows } from '../misc/customHook'
 import {apiGet} from '../misc/config'
+import ShowGrid from '../Components/show/ShowGrid'
 
 function Starred() {
 
 
-    const [state] =useShows()
+    const {state} =useShows()
 
     const[shows,setShows]= useState(null);
     const[isLoading,setIsLoading]= useState(true);
@@ -23,10 +24,10 @@ function Starred() {
           .then(
             results =>{
                 setShows(results)
-                setIsLoading(false)
+                setIsLoading(false) 
              }).catch(err=>{
                 setError(err.message)
-                setIsLoading(false)
+                setIsLoading(false)     
              })
         }
         else {
@@ -34,16 +35,17 @@ function Starred() {
         }
     } ,[state])
 
-   
+  
 
     return ( 
        <MainPageLayout>
         {isLoading && <div>Shows are still loading</div>}
          {error && <div>error occured:{error} </div>}
          {!isLoading && !shows && <div>No Shows are added</div>}
-         {!isLoading && !error && shows && <showGrid data={shows}/>}
+         {!isLoading && !error && shows && <ShowGrid data={shows}/>}
        </MainPageLayout>
     )
 }
+
 
 export default Starred
