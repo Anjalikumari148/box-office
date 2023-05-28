@@ -1,3 +1,9 @@
+**Description**
+A box office website Display of various movies, shows and television actors. This contains the homepage with a search bar and buttons.
+When we search for a show or film, it displays the collected show APIs from https://www.tvmaze.com/api. We have cards with two buttons readme and a start button.We can navigate to another page which starred page with all the starred shows. Read more display details regarding the shows. Actor button displays over the actor's details.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
